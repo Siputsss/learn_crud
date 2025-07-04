@@ -7,4 +7,8 @@ class Routes {
   static const sampleSatu = '/sample_satu';
   static const sampleDua = '/sample_dua';
   static const sampleTiga = '/sample_tiga';
+  static const productList = '/product_list';
+  static const productDetail = '/product_detail';
+  static const productAdd = '/product_add';
+  static const productEdit = '/product_edit';
 }
