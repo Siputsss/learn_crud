@@ -24,7 +24,7 @@ class ProductListView extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                FirebaseFirestore.instance.collection('product').doc().set({
+                FirebaseFirestore.instance.collection('product').doc('docid123').set({
                   'name': 'putri',
                   'price': 123123,
                   'qty': 12,
