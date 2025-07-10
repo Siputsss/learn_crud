@@ -21,6 +21,18 @@ class ProductListView extends StatelessWidget {
               },
               child: Text("Read"),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                FirebaseFirestore.instance.collection('product').doc().set({
+                  'name': 'putri',
+                  'price': 123123,
+                  'qty': 12,
+                });
+                debugPrint('data has been created');
+              },
+              child: Text("Create"),
+            ),
           ],
         ),
       ),
