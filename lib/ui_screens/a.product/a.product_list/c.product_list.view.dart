@@ -33,6 +33,25 @@ class ProductListView extends StatelessWidget {
               },
               child: Text("Create"),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                FirebaseFirestore.instance.collection('product').doc('docid123').set({'name': 'putri edited'});
+                debugPrint('data has been updated');
+              },
+              child: Text("Update"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                FirebaseFirestore.instance.collection('product').doc('docid123').update({
+                  'name': 'putrii edited again',
+                  'color': 'red',
+                });
+                debugPrint('data has been updated');
+              },
+              child: Text("Update 2"),
+            ),
           ],
         ),
       ),
