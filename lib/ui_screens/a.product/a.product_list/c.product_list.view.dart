@@ -23,7 +23,7 @@ class ProductListView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 FirebaseFirestore.instance.collection('product').doc('docid123').set({
                   'name': 'putri',
                   'price': 123123,
@@ -35,7 +35,7 @@ class ProductListView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 FirebaseFirestore.instance.collection('product').doc('docid123').set({
                   'name': 'putri edited',
                   'color': 'red',
@@ -46,7 +46,7 @@ class ProductListView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 FirebaseFirestore.instance.collection('product').doc('docid123').update({
                   'name': 'putrii edited again',
                   'color': 'red',
@@ -54,6 +54,14 @@ class ProductListView extends StatelessWidget {
                 debugPrint('data has been updated');
               },
               child: Text("Update 2"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                FirebaseFirestore.instance.collection('product').doc('docid123').delete();
+                debugPrint('data has been deleted');
+              },
+              child: Text("Delete"),
             ),
           ],
         ),
