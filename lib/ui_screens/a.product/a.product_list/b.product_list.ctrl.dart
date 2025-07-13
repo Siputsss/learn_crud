@@ -17,4 +17,8 @@ class ProductListCtrl {
     debugPrint(product.toString());
     return product;
   }
+
+  readList() async {
+    _dt.rxProductList.stateAsync = getColl();
+  }
 }

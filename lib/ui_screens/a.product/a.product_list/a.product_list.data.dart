@@ -7,5 +7,8 @@ class ProductListData {
 
   final rxRandom = Prov.sample.st.rxRandom;
 
-  final rxProductList = RM.injectFuture<List<Product>>(() => Future.value([]));
+  final rxProductList = RM.injectFuture<List<Product>>(
+    () => Future.value([]),
+    sideEffects: SideEffects(initState: () => _ct.readList()),
+  );
 }
