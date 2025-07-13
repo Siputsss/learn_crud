@@ -31,6 +31,7 @@ class ProductListCtrl {
       createdAt: DateTime.now().toString(),
     );
     FirebaseFirestore.instance.collection('product').doc(product.id).set(product.toMap());
+    _dt.rxProductList.st = [..._dt.rxProductList.st]..insert(0, product);
     debugPrint(product.toString());
   }
 }
