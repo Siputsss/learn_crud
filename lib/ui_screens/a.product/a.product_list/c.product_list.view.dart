@@ -37,6 +37,7 @@ class ProductListView extends StatelessWidget {
                       ),
                     ],
                   ),
+                  onTap: () => _ct.getDoc(data[index].id),
                 ),
               ),
             ),
