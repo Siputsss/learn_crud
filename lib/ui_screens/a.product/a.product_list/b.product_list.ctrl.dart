@@ -28,6 +28,10 @@ class ProductListCtrl {
     return Product.fromMap(readDoc.data() ?? {});
   }
 
+  readDoc(String id) {
+    _dt.rxProductDetail.stateAsync = getDoc(id);
+  }
+
   Future<void> createDoc() async {
     final product = Product(
       id: UniqueKey().toString(),
