@@ -45,6 +45,10 @@ class ProductListCtrl {
       updatedAt: DateTime.now().toString(),
     );
     FirebaseFirestore.instance.collection('product').doc(productEdit.id).set(productEdit.toMap());
+    _dt.rxProductList.setState((s) {
+      final index = _dt.rxProductList.st.indexWhere((element) => element.id == product.id);
+      return s[index] = productEdit;
+    });
     debugPrint('product has been edited');
   }
 
