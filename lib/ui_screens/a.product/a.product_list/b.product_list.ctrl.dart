@@ -37,6 +37,7 @@ class ProductListCtrl {
 
   Future<void> deleteDoc(String id) async {
     FirebaseFirestore.instance.collection('product').doc(id).delete();
+    _dt.rxProductList.st = [..._dt.rxProductList.st]..removeWhere((element) => element.id == id);
     debugPrint('product has been deleted');
   }
 }
