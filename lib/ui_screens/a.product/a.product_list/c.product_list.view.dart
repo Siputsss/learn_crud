@@ -17,7 +17,21 @@ class ProductListView extends StatelessWidget {
             ...List.generate(
               data.length,
               (index) => Card(
-                child: ListTile(title: Text(data[index].name), subtitle: Text(data[index].id)),
+                child: ListTile(
+                  title: Text(data[index].name),
+                  subtitle: Text(data[index].id),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          _ct.deleteDoc(data[index].id);
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],

@@ -34,4 +34,9 @@ class ProductListCtrl {
     _dt.rxProductList.st = [..._dt.rxProductList.st]..insert(0, product);
     debugPrint(product.toString());
   }
+
+  Future<void> deleteDoc(String id) async {
+    FirebaseFirestore.instance.collection('product').doc(id).delete();
+    debugPrint('product has been deleted');
+  }
 }
