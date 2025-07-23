@@ -35,6 +35,27 @@ class ProductListCtrl {
     debugPrint(product.toString());
   }
 
+  Future<void> updateDoc(Product product) async {
+    final productEdit = Product(
+      id: product.id,
+      name: 'product edited',
+      price: product.price,
+      qty: 10,
+      createdAt: product.createdAt,
+      updatedAt: DateTime.now().toString(),
+    );
+    FirebaseFirestore.instance.collection('product').doc(productEdit.id).set(productEdit.toMap());
+    debugPrint('product has been edited');
+  }
+
+  // Future<void> upddateDoc(String id) async {
+  //   FirebaseFirestore.instance.collection('product').doc(id).update({
+  //     'name': 'edit',
+  //     'created_at': DateTime.now().toString(),
+  //   });
+  //   debugPrint('product has been edited');
+  // }
+
   Future<void> deleteDoc(String id) async {
     FirebaseFirestore.instance.collection('product').doc(id).delete();
     _dt.rxProductList.st = [..._dt.rxProductList.st]..removeWhere((element) => element.id == id);

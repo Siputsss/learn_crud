@@ -29,6 +29,12 @@ class ProductListView extends StatelessWidget {
                         },
                         icon: const Icon(Icons.delete),
                       ),
+                      IconButton(
+                        onPressed: () {
+                          _ct.updateDoc(data[index]);
+                        },
+                        icon: const Icon(Icons.update),
+                      ),
                     ],
                   ),
                 ),
