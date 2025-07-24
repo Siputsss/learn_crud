@@ -12,7 +12,10 @@ class ProductProv {
     sideEffects: SideEffects(initState: () => _sv.readList()),
   );
 
-  final rxProductDetail = RM.injectFuture<Product?>(() => Future.value(null));
+  final rxProductDetail = RM.injectFuture<Product?>(
+    () => Future.value(null),
+    sideEffects: SideEffects(initState: () => _sv.readDoc()),
+  );
 
   final rxSelectedId = RM.inject(() => '');
 }
