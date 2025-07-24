@@ -13,4 +13,6 @@ class ProductProv {
   );
 
   final rxProductDetail = RM.injectFuture<Product?>(() => Future.value(null));
+
+  final rxSelectedId = RM.inject(() => '');
 }

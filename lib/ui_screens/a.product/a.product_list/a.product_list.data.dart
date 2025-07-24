@@ -10,4 +10,6 @@ class ProductListData {
   final rxProductList = _pv.rxProductList;
 
   final rxProductDetail = _pv.rxProductDetail;
+
+  final rxSelectedId = _pv.rxSelectedId;
 }

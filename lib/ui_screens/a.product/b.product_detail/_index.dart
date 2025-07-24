@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:learn_crud/dt_domains/a.product/_index.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../../../app/_index.dart';
@@ -18,3 +19,4 @@ part 'widgets/e.product_detail.echo.dart';
 ProductDetailData get _dt => Data.productDetail.st;
 ProductDetailCtrl get _ct => Ctrl.productDetail;
 
+ProductProv get _pv => Prov.product.st;

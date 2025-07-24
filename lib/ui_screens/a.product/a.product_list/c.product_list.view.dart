@@ -37,7 +37,10 @@ class ProductListView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onTap: () => _ct.readDoc(data[index].id),
+                  onTap: () {
+                    _ct.setSelectedId(data[index].id);
+                    nav.to(Routes.productDetail);
+                  },
                 ),
               ),
             ),

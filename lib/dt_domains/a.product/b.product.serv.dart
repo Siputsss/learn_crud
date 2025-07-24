@@ -13,6 +13,10 @@ class ProductServ {
     logzz.i(ProductServ, 'rxCounter setState success');
   }
 
+  setSelectedId(String id) {
+    _pv.rxSelectedId.st = id;
+  }
+
   Future<List<Product>> getColl() async {
     List<Product> product = [];
     final read = await FirebaseFirestore.instance.collection('product').get();
@@ -28,14 +32,14 @@ class ProductServ {
     _pv.rxProductList.stateAsync = getColl();
   }
 
-  Future<Product?> getDoc(String id) async {
-    final readDoc = await FirebaseFirestore.instance.collection('product').doc(id).get();
+  Future<Product?> getDoc() async {
+    final readDoc = await FirebaseFirestore.instance.collection('product').doc(_pv.rxSelectedId.st).get();
     debugPrint(readDoc.data().toString());
     return Product.fromMap(readDoc.data() ?? {});
   }
 
-  readDoc(String id) {
-    _pv.rxProductDetail.stateAsync = getDoc(id);
+  readDoc() {
+    _pv.rxProductDetail.stateAsync = getDoc();
   }
 
   Future<void> createDoc() async {

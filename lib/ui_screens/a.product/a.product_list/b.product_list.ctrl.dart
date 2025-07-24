@@ -7,6 +7,11 @@ class ProductListCtrl {
 
   updateRandom() => Serv.sample.updateRandom();
 
+  setSelectedId(String id) {
+    _sv.setSelectedId(id);
+    debugPrint(_dt.rxSelectedId.st);
+  }
+
   Future<List<Product>> getColl() async {
     return _sv.getColl();
   }
@@ -16,11 +21,11 @@ class ProductListCtrl {
   }
 
   Future<Product?> getDoc(String id) async {
-    return _sv.getDoc(id);
+    return _sv.getDoc();
   }
 
   readDoc(String id) {
-    _sv.readDoc(id);
+    _sv.readDoc();
   }
 
   Future<void> createDoc() async {
