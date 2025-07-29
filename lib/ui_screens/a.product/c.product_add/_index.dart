@@ -1,6 +1,9 @@
 import 'dart:math';
 
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_crud/dt_domains/_models/_index.dart';
+import 'package:learn_crud/dt_domains/a.product/_index.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../../../app/_index.dart';
@@ -17,4 +20,7 @@ part 'widgets/e.product_add.echo.dart';
 
 ProductAddData get _dt => Data.productAdd.st;
 ProductAddCtrl get _ct => Ctrl.productAdd;
+
+ProductServ get _sv => Serv.product;
+
 
