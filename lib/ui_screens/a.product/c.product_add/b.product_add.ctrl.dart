@@ -10,12 +10,13 @@ class ProductAddCtrl {
   Future<void> createDoc() async {
     final product = Product(
       id: UniqueKey().toString(),
-      name: generateWordPairs().take(2).join(' '),
+      name: _dt.rxName.value,
       price: Random().nextInt(9999),
       qty: Random().nextInt(9999),
       createdAt: DateTime.now().toString(),
     );
     _sv.createDoc(product);
+    nav.back();
   }
 
   submit() async => _dt.rxForm.submit();
