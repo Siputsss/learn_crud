@@ -17,63 +17,31 @@ class ProductServ {
     _pv.rxSelectedId.st = id;
   }
 
-  Future<List<Product>> getColl() async {
-    List<Product> product = [];
-    final read = await FirebaseFirestore.instance.collection('product').get();
-    for (var element in read.docs) {
-      product.add(Product.fromMap(element.data()));
-    }
-
-    debugPrint(product.toString());
-    return product;
-  }
-
   readList() async {
-    _pv.rxProductList.stateAsync = getColl();
-  }
-
-  Future<Product?> getDoc() async {
-    final readDoc = await FirebaseFirestore.instance.collection('product').doc(_pv.rxSelectedId.st).get();
-    debugPrint(readDoc.data().toString());
-    return Product.fromMap(readDoc.data() ?? {});
+    _pv.rxProductList.stateAsync = _rp.getColl();
   }
 
   readDoc() {
-    _pv.rxProductDetail.stateAsync = getDoc();
+    _pv.rxProductDetail.stateAsync = _rp.getDoc();
   }
 
-  Future<void> createDoc() async {
-    final product = Product(
-      id: UniqueKey().toString(),
-      name: generateWordPairs().take(2).join(' '),
-      price: Random().nextInt(9999),
-      qty: Random().nextInt(9999),
-      createdAt: DateTime.now().toString(),
-    );
-    FirebaseFirestore.instance.collection('product').doc(product.id).set(product.toMap());
+  Future<void> createDoc(Product product) async {
+    _rp.createDoc(product);
     _pv.rxProductList.st = [..._pv.rxProductList.st]..insert(0, product);
     debugPrint(product.toString());
   }
 
-  Future<void> updateDoc(Product product) async {
-    final productEdit = Product(
-      id: product.id,
-      name: 'product edited',
-      price: product.price,
-      qty: 10,
-      createdAt: product.createdAt,
-      updatedAt: DateTime.now().toString(),
-    );
-    FirebaseFirestore.instance.collection('product').doc(productEdit.id).set(productEdit.toMap());
+  Future<void> updateDoc(Product productEdit) async {
+    _rp.updateDoc(productEdit);
     _pv.rxProductList.setState((s) {
-      final index = _pv.rxProductList.st.indexWhere((element) => element.id == product.id);
+      final index = _pv.rxProductList.st.indexWhere((element) => element.id == productEdit.id);
       return s[index] = productEdit;
     });
     debugPrint('product has been edited');
   }
 
   Future<void> deleteDoc(String id) async {
-    FirebaseFirestore.instance.collection('product').doc(id).delete();
+    _rp.deleteDoc(id);
     _pv.rxProductList.st = [..._pv.rxProductList.st]..removeWhere((element) => element.id == id);
     debugPrint('product has been deleted');
   }

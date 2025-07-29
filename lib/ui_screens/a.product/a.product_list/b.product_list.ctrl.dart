@@ -12,16 +12,8 @@ class ProductListCtrl {
     debugPrint(_dt.rxSelectedId.st);
   }
 
-  Future<List<Product>> getColl() async {
-    return _sv.getColl();
-  }
-
   readList() async {
     _sv.readList();
-  }
-
-  Future<Product?> getDoc(String id) async {
-    return _sv.getDoc();
   }
 
   readDoc(String id) {
@@ -29,11 +21,26 @@ class ProductListCtrl {
   }
 
   Future<void> createDoc() async {
-    _sv.createDoc();
+    final product = Product(
+      id: UniqueKey().toString(),
+      name: generateWordPairs().take(2).join(' '),
+      price: Random().nextInt(9999),
+      qty: Random().nextInt(9999),
+      createdAt: DateTime.now().toString(),
+    );
+    _sv.createDoc(product);
   }
 
   Future<void> updateDoc(Product product) async {
-    _sv.updateDoc(product);
+    final productEdit = Product(
+      id: product.id,
+      name: 'product edited',
+      price: 100,
+      qty: 10,
+      createdAt: product.createdAt,
+      updatedAt: DateTime.now().toString(),
+    );
+    _sv.updateDoc(productEdit);
   }
 
   Future<void> deleteDoc(String id) async {
