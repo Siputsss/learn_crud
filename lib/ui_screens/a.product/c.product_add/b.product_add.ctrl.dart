@@ -11,8 +11,8 @@ class ProductAddCtrl {
     final product = Product(
       id: UniqueKey().toString(),
       name: _dt.rxName.value,
-      price: Random().nextInt(9999),
-      qty: Random().nextInt(9999),
+      price: int.parse(_dt.rxPrice.value),
+      qty: int.parse(_dt.rxQty.value),
       createdAt: DateTime.now().toString(),
     );
     _sv.createDoc(product);

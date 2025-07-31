@@ -25,8 +25,31 @@ class ProductAddView extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
+              OnFormBuilder(
+                listenTo: _dt.rxForm,
+                builder: () => TextField(
+                  controller: _dt.rxPrice.controller,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'price',
+                    errorText: _dt.rxPrice.error,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              OnFormBuilder(
+                listenTo: _dt.rxForm,
+                builder: () => TextField(
+                  controller: _dt.rxQty.controller,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'quantity',
+                    errorText: _dt.rxQty.error,
+                  ),
+                ),
+              ),
               const SizedBox(height: 20),
-
               OnFormSubmissionBuilder(
                 listenTo: _dt.rxForm,
                 onSubmitting: () => CircularProgressIndicator(),
