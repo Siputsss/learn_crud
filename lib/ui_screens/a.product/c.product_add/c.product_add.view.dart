@@ -14,6 +14,16 @@ class ProductAddView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              ElevatedButton(
+                onPressed: () async {
+                  _dt.rxPickedImage.st = await ImagePicker().pickImage(source: ImageSource.gallery);
+                  debugPrint(_dt.rxPickedImage.st?.mimeType);
+                  debugPrint(_dt.rxPickedImage.st?.name);
+                  debugPrint(_dt.rxPickedImage.st?.path);
+                },
+                child: Text("Pick Image"),
+              ),
+              const SizedBox(height: 20),
               OnFormBuilder(
                 listenTo: _dt.rxForm,
                 builder: () => TextField(
