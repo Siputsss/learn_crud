@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:learn_crud/dt_domains/_models/_index.dart';
@@ -23,3 +22,4 @@ ProductAddData get _dt => Data.productAdd.st;
 ProductAddCtrl get _ct => Ctrl.productAdd;
 
 ProductServ get _sv => Serv.product;
+ProductProv get _pv => Prov.product.st;

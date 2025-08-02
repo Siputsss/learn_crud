@@ -15,7 +15,7 @@ class ProductAddCtrl {
       price: int.parse(_dt.rxPrice.value),
       qty: int.parse(_dt.rxQty.value),
       createdAt: DateTime.now().toString(),
-      imageUrl: await uploadImage(id),
+      imageUrl: await _sv.uploadImage(id),
     );
     await _sv.createDoc(product);
     nav.back();
@@ -31,12 +31,12 @@ class ProductAddCtrl {
     return _dt.rxPickedImage.st;
   }
 
-  Future<String> uploadImage(String id) async {
-    final data = await _dt.rxPickedImage.st!.readAsBytes();
-    final contentType = _dt.rxPickedImage.st?.mimeType;
-    final url = await FirebaseStorage.instance.ref(id).putData(data, SettableMetadata(contentType: contentType));
-    return url.ref.getDownloadURL();
-  }
+  // Future<String> uploadImage(String id) async {
+  //   final data = await _dt.rxPickedImage.st!.readAsBytes();
+  //   final contentType = _dt.rxPickedImage.st?.mimeType;
+  //   final url = await FirebaseStorage.instance.ref(id).putData(data, SettableMetadata(contentType: contentType));
+  //   return url.ref.getDownloadURL();
+  // }
 
   submit() async => _dt.rxForm.submit();
 }

@@ -7,7 +7,7 @@ class ProductAddData {
 
   final rxRandom = Prov.sample.st.rxRandom;
 
-  final rxPickedImage = RM.inject<XFile?>(() => null);
+  final rxPickedImage = _pv.rxPickedImage;
 
   final rxForm = RM.injectForm(
     autovalidateMode: AutovalidateMode.onUserInteraction,
