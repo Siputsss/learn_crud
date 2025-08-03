@@ -8,17 +8,25 @@ class ProductEditCtrl {
   updateRandom() => Serv.sample.updateRandom();
 
   Future<void> updateDoc() async {
+    final id = _dt.rxProductDetail.st!.id;
     final productEdit = Product(
-      id: _dt.rxProductDetail.st!.id,
+      id: id,
       name: _dt.rxName.st.value,
       price: int.parse(_dt.rxPrice.st.value),
       qty: int.parse(_dt.rxQty.st.value),
       createdAt: _dt.rxProductDetail.st!.createdAt,
       updatedAt: DateTime.now().toString(),
+      imageUrl: await _sv.uploadImage(id),
     );
     _sv.updateDoc(productEdit);
     nav.back();
   }
 
   submit() async => _dt.rxForm.submit();
+
+  Future<XFile?> pickImage() async {
+    _sv.pickImage();
+
+    return _dt.rxPickedImage.st;
+  }
 }

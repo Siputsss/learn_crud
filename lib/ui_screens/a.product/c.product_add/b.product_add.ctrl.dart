@@ -22,21 +22,10 @@ class ProductAddCtrl {
   }
 
   Future<XFile?> pickImage() async {
-    _dt.rxPickedImage.st = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    debugPrint(_dt.rxPickedImage.st?.mimeType);
-    debugPrint(_dt.rxPickedImage.st?.name);
-    debugPrint(_dt.rxPickedImage.st?.path);
+    _sv.pickImage();
 
     return _dt.rxPickedImage.st;
   }
-
-  // Future<String> uploadImage(String id) async {
-  //   final data = await _dt.rxPickedImage.st!.readAsBytes();
-  //   final contentType = _dt.rxPickedImage.st?.mimeType;
-  //   final url = await FirebaseStorage.instance.ref(id).putData(data, SettableMetadata(contentType: contentType));
-  //   return url.ref.getDownloadURL();
-  // }
 
   submit() async => _dt.rxForm.submit();
 }
