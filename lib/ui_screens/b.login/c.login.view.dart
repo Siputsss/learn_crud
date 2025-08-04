@@ -33,7 +33,12 @@ class LoginView extends StatelessWidget {
               child: Text("Create Email & Password"),
             ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: Text("Sign In by Email & Password")),
+            ElevatedButton(
+              onPressed: () {
+                _ct.signInEP();
+              },
+              child: Text("Sign In by Email & Password"),
+            ),
             const SizedBox(height: 10),
             ElevatedButton(onPressed: () {}, child: Text("Sign Out")),
             const SizedBox(height: 10),

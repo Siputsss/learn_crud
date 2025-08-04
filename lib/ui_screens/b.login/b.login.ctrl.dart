@@ -25,12 +25,21 @@ class LoginCtrl {
     }
   }
 
-  createEP() async {
+  Future<UserCredential> createEP() async {
     final create = await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: 'siska@gmail.com',
       password: '222222',
     );
     debugPrint(create.user.toString());
     return create;
+  }
+
+  Future<UserCredential> signInEP() async {
+    final signinEP = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: 'siska@gmail.com',
+      password: '222222',
+    );
+    debugPrint(signinEP.user.toString());
+    return signinEP;
   }
 }
