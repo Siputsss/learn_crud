@@ -24,4 +24,13 @@ class LoginCtrl {
       debugPrint(e.toString());
     }
   }
+
+  createEP() async {
+    final create = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: 'siska@gmail.com',
+      password: '222222',
+    );
+    debugPrint(create.user.toString());
+    return create;
+  }
 }
