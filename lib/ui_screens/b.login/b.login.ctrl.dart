@@ -42,4 +42,9 @@ class LoginCtrl {
     debugPrint(signinEP.user.toString());
     return signinEP;
   }
+
+  Future<void> signOut() async {
+    final signOut = FirebaseAuth.instance.signOut();
+    debugPrint(signOut.toString());
+  }
 }
