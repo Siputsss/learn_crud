@@ -47,7 +47,12 @@ class LoginView extends StatelessWidget {
               child: Text("Sign Out"),
             ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: Text("Delete Account")),
+            ElevatedButton(
+              onPressed: () {
+                _ct.deleteAccount();
+              },
+              child: Text("Delete Account"),
+            ),
           ],
         ),
       ),

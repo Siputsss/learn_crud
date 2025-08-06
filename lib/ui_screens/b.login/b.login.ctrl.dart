@@ -44,7 +44,12 @@ class LoginCtrl {
   }
 
   Future<void> signOut() async {
-    final signOut = FirebaseAuth.instance.signOut();
-    debugPrint(signOut.toString());
+    FirebaseAuth.instance.signOut();
+    debugPrint('you already signed out');
+  }
+
+  Future<void> deleteAccount() async {
+    FirebaseAuth.instance.currentUser?.delete();
+    debugPrint('user has been deleted');
   }
 }
