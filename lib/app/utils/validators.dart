@@ -102,8 +102,11 @@ class Validate {
 
   static String? pwdContain(String? str) {
     if (str != null) {
-      if (!RegExp(r"^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$").hasMatch(str)) {
-        return "must contain number and letter";
+      if (str.length < 6) {
+        return "Password must be at least 6 characters";
+      }
+      if (!RegExp(r'[0-9]').hasMatch(str) || !RegExp(r'[a-zA-Z]').hasMatch(str)) {
+        return "Password must contain number and letter";
       }
     }
     return null;

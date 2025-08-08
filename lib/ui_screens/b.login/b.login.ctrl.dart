@@ -15,12 +15,8 @@ class LoginCtrl {
     return _sv.signInbyGoogle();
   }
 
-  Future<UserCredential> createEP() async {
-    return _sv.createEP('siska@gmail.com', '222222');
-  }
-
   Future<UserCredential> signInEP() async {
-    return _sv.signInEP('siska@gmail.com', '222222');
+    return _sv.signInEP(_dt.rxEmail.value, _dt.rxPassword.value);
   }
 
   Future<void> signOut() async {
@@ -30,4 +26,6 @@ class LoginCtrl {
   Future<void> deleteAccount() async {
     _sv.deleteAccount();
   }
+
+  submit() async => _dt.rxForm.submit();
 }

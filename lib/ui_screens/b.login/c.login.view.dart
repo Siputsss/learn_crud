@@ -9,51 +9,69 @@ class LoginView extends StatelessWidget {
       appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: LoginAppbar()),
       floatingActionButton: LoginFab(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                _ct.signInAnonymous();
-              },
-              child: Text("Sign In Anonymous"),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                _ct.signInbyGoogle();
-              },
-              child: Text("Sign In by Google"),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                _ct.createEP();
-              },
-              child: Text("Create Email & Password"),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                _ct.signInEP();
-              },
-              child: Text("Sign In by Email & Password"),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                _ct.signOut();
-              },
-              child: Text("Sign Out"),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                _ct.deleteAccount();
-              },
-              child: Text("Delete Account"),
-            ),
-          ],
+        child: SizedBox(
+          width: 480,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              OnFormBuilder(
+                listenTo: _dt.rxForm,
+                builder: () => TextField(
+                  controller: _dt.rxEmail.controller,
+                  decoration: InputDecoration(
+                    labelText: 'email',
+                    hintText: 'name@gmail.com',
+                    errorText: _dt.rxEmail.error,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              OnFormBuilder(
+                listenTo: _dt.rxForm,
+                builder: () => TextField(
+                  obscureText: true,
+                  controller: _dt.rxPassword.controller,
+                  decoration: InputDecoration(
+                    labelText: 'password',
+                    hintText: 'password',
+                    errorText: _dt.rxPassword.error,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              OnFormSubmissionBuilder(
+                listenTo: _dt.rxForm,
+                onSubmitting: () => CircularProgressIndicator(),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _ct.submit();
+                  },
+                  child: Text("submit"),
+                ),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  _ct.signInAnonymous();
+                },
+                child: Text("Sign In Anonymous"),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  _ct.signInbyGoogle();
+                },
+                child: Text("Sign In by Google"),
+              ),
+              const SizedBox(height: 10),
+              TextButton(
+                onPressed: () => nav.toReplacement(Routes.register),
+                child: Text("Don't have account? Sign Up"),
+              ),
+            ],
+          ),
         ),
       ),
     );
