@@ -3,6 +3,15 @@ part of '_index.dart';
 class AuthServ {
   void init() {
     logxx.i(AuthServ, '...');
+
+    try {
+      _pv.rxUser.subscription = FirebaseAuth.instance.authStateChanges().listen((event) {
+        _pv.rxUser.st = event;
+        debugPrint(event.toString());
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   void updateRandom() {
@@ -11,6 +20,18 @@ class AuthServ {
 
   void onSetState() {
     logzz.i(AuthServ, 'rxCounter setState success');
+  }
+
+  responseAuthStates(User? user) {
+    if (nav.routeData.location == '/login' || nav.routeData.location == '/register') {
+      if (user != null) {
+        nav.toReplacement(Routes.productList);
+      }
+    } else {
+      if (user == null) {
+        nav.toReplacement(Routes.login);
+      }
+    }
   }
 
   Future<UserCredential> signInAnonymous() async {
