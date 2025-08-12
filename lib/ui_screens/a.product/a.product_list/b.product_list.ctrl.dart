@@ -24,6 +24,10 @@ class ProductListCtrl {
     _sv.deleteDoc(id);
   }
 
+  Future<void> signOut() async {
+    _sva.signOut();
+  }
+
   // Future<void> upddateDoc(String id) async {
   //   FirebaseFirestore.instance.collection('product').doc(id).update({
   //     'name': 'edit',

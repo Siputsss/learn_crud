@@ -14,6 +14,12 @@ class ProductListView extends StatelessWidget {
         onError: (error, refreshError) => Text('$error'),
         onData: (data) => Column(
           children: [
+            IconButton(
+              onPressed: () {
+                _ct.signOut();
+              },
+              icon: const Icon(Icons.close),
+            ),
             ...List.generate(
               data.length,
               (index) => Card(

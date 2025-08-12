@@ -7,8 +7,8 @@ Future<void> inits() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   Serv.sample.init();
-  Serv.product.init();
   Serv.auth.init();
+  Serv.product.init();
 
   logx.wtf('inits success');
 }

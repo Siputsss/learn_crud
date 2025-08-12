@@ -9,7 +9,7 @@ class AuthProv {
 
   final rxUser = RM.injectStream<User?>(
     () => Stream.value(null),
-    autoDisposeWhenNotUsed: false,
+    // autoDisposeWhenNotUsed: false,
     sideEffects: SideEffects.onData((data) async {
       await _sv.responseAuthStates(data);
     }),

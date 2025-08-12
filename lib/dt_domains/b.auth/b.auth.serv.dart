@@ -7,7 +7,7 @@ class AuthServ {
     try {
       _pv.rxUser.subscription = FirebaseAuth.instance.authStateChanges().listen((event) {
         _pv.rxUser.st = event;
-        debugPrint(event.toString());
+        // debugPrint(event.toString());
       });
     } catch (e) {
       debugPrint(e.toString());
