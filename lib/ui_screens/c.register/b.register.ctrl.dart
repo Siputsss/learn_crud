@@ -7,8 +7,8 @@ class RegisterCtrl {
 
   updateRandom() => Serv.sample.updateRandom();
 
-  Future<UserCredential> createEP() async {
-    return _sv.createEP(_dt.rxEmail.value, _dt.rxPassword.value);
+  Future<void> createEP() async {
+    _sv.createEP(_dt.rxEmail.value, _dt.rxPassword.value);
   }
 
   submit() async => _dt.rxForm.submit();

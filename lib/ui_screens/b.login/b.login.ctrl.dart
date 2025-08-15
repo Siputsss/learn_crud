@@ -7,8 +7,8 @@ class LoginCtrl {
 
   updateRandom() => Serv.sample.updateRandom();
 
-  Future<UserCredential> signInAnonymous() async {
-    return _sv.signInAnonymous();
+  Future<void> signInAnonymous() async {
+    _sv.signInAnonymous();
   }
 
   Future signInbyGoogle() async {
@@ -16,7 +16,9 @@ class LoginCtrl {
   }
 
   Future<UserCredential> signInEP() async {
-    return _sv.signInEP(_dt.rxEmail.value, _dt.rxPassword.value);
+    final userCredential = await _sv.signInEP(_dt.rxEmail.value, _dt.rxPassword.value);
+    _pv.rxUser.setState((s) => userCredential.user);
+    return userCredential;
   }
 
   Future<void> signOut() async {

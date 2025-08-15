@@ -11,7 +11,6 @@ class RegisterData {
     autovalidateMode: AutovalidateMode.onUserInteraction,
     submit: () async {
       await _ct.createEP();
-      nav.back();
     },
   );
 

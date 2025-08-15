@@ -23,7 +23,14 @@ class AuthServ {
   }
 
   responseAuthStates(User? user) {
-    if (nav.routeData.location == '/login' || nav.routeData.location == '/register') {
+    if (nav.routeData.location == '/register') {
+      if (user != null) {
+        user = null;
+        nav.toReplacement(Routes.login);
+      }
+    }
+
+    if (nav.routeData.location == '/login') {
       if (user != null) {
         nav.toReplacement(Routes.productList);
       }
@@ -34,16 +41,16 @@ class AuthServ {
     }
   }
 
-  Future<UserCredential> signInAnonymous() async {
-    return _rp.signInAnonymous();
+  Future<void> signInAnonymous() async {
+    _rp.signInAnonymous();
   }
 
   Future signInbyGoogle() async {
     return _rp.signInbyGoogle();
   }
 
-  Future<UserCredential> createEP(String email, String password) async {
-    return _rp.createEP(email, password);
+  Future<void> createEP(String email, String password) async {
+    _rp.createEP(email, password);
   }
 
   Future<UserCredential> signInEP(String email, String password) async {

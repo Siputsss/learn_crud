@@ -28,6 +28,10 @@ class ProductListCtrl {
     _sva.signOut();
   }
 
+  Future<void> deleteAccount() async {
+    _sva.deleteAccount();
+  }
+
   // Future<void> upddateDoc(String id) async {
   //   FirebaseFirestore.instance.collection('product').doc(id).update({
   //     'name': 'edit',
